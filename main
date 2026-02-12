@@ -1,1 +1,23 @@
-# planner
+# # Performance task
+print("Your To Do List")
+print("----------------------------------------------")
+user = input("What is your name?:")
+print(f"Hello {user}! Today is a new day!")
+day = input("What day is it?")
+print(f"Okay it is {day}")
+
+print("Your to do list is empty today.")
+
+to_do = []
+answer = input("Would you like to add something to your to do list? (yes/no):").lower()
+def to_do_list(answer):
+    if answer == "yes":
+        task = input("What would you like to add?")
+        to_do.append(task)
+        print(f"To Do List: ", (to_do))  
+        choice = input("Would you like to add something else? (yes/no): ").lower()
+        to_do_list(choice)
+    else:
+        print("Okay, Have a productive day!")
+
+to_do_list(answer)
