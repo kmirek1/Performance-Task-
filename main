@@ -1,23 +1,22 @@
-# # Performance task
-print("Your To Do List")
-print("----------------------------------------------")
-user = input("What is your name?:")
-print(f"Hello {user}! Today is a new day!")
-day = input("What day is it?")
-print(f"Okay it is {day}")
+# Performance task
+print("Your To Do List") #prints "Your To Do List"
+print("----------------------------------------------") #Prints a line to seperate the title and inputs
+user = input("What is your name?:") # Asks the user for their name
+print(f"Hello {user}! Today is a new day!") #prints "Hello 'user'! Today is a new say!"
+day = input("What day is it?") #asks the user for the date
 
-print("Your to do list is empty today.")
+print(f"Your to do list is empty for {day}.") #Tells the user that their to-do list for that day is empty
 
-to_do = []
-answer = input("Would you like to add something to your to do list? (yes/no):").lower()
-def to_do_list(answer):
-    if answer == "yes":
-        task = input("What would you like to add?")
-        to_do.append(task)
-        print(f"To Do List: ", (to_do))  
-        choice = input("Would you like to add something else? (yes/no): ").lower()
-        to_do_list(choice)
+to_do = [] #creates a list that is empty for the user's to-do list
+answer = input("Would you like to add something to your to do list? (yes/no):").lower() #asks the user if they would like to add something new to there to-do list
+def to_do_list(answer): #creates a function called 'to_do_list'
+    if answer == "yes": #adds selection into the program 
+        task = input("What would you like to add?") #asks the user what they would like to add to their to-do list
+        to_do.append(task) #appends the to_do list and adds the task that the user inputed
+        print(f"To Do List: ", (to_do))   #prints the updated to_do list for the user
+        choice = input("Would you like to add something else? (yes/no): ").lower() #asks the user if they would like to add something new 
+        to_do_list(choice) 
     else:
-        print("Okay, Have a productive day!")
+        print("Okay, Have a productive day!") #if the user is done adding items to their to_do list then it prints "Okay, Have a productive day!"
 
-to_do_list(answer)
+to_do_list(answer) 
