@@ -1,36 +1,46 @@
-#performance ready 
-to_do = []
+#Performance Task
+task_list = [] #creates an empty list
+def manage_list(task_list): #creates a function called manage_list
+    print("\nWhat would you like to do?") # asks the user what they want to do 
+    print("1. Add a task") #gives option 1
+    print("2. Remove a task")#gives option 2
+    print("3. View list")#gives option 3
 
-def manage_tasks(user_choice): # PARAMETER: user_choice determines if the loop runs
-    while user_choice == "yes":    # ITERATION: Using a while loop to manage the list
-        task = input("What would you like to add? ")
-        to_do.append(task)
-        
-        print(f"\n--- Updated List ---")
-        # ITERATION: Using a for loop to display items
-        for item in to_do:
-            # SELECTION: Adds a '!' to tasks that are urgent (High Priority)
-            if "urgent" in item.lower():
-                print(f"Priority: {item} !!")
+    choice = input("Enter 1, 2, or 3: ") #asks the user to input what option they want
+
+    if choice == "1": #defines what choice 1 is and does
+        new_task = input("Enter a task to add: ") #asks the user what task they want to add
+        task_list.append(new_task)# adds the new task
+        print("Task added!")
+        manage_list(task_list) #brings back the user back to the options
+
+    elif choice == "2": #defines what choice 2 is and does
+        if len(task_list) == 0: #if the list is empty/ items in the list = 0
+            print("Your list is empty.") 
+        else:
+            print("\nYour Tasks:") #prints the list
+            for i in range(len(task_list)): 
+                print(f"{i + 1}. {task_list[i]}") #puts how many tasks are in the list
+
+            remove_index = int(input("Enter the number of the task to remove: ")) - 1 #removes a task
+            
+            if 0 <= remove_index < len(task_list): 
+                removed = task_list.pop(remove_index)
+                print(f"{removed} was removed.")
+                manage_list(task_list)
             else:
-                print(f"Task: {item}")
-        
-        user_choice = input("\nWould you like to add something else? (yes/no): ").lower()
+                print("Invalid choice.")
+
+    elif choice == "3":
+        if len(task_list) == 0:
+            print("Your list is empty.")
+        else:
+            print("\nYour Tasks:")
+            for task in task_list:
+                print(f"• {task}")
+                manage_list(task_list)
+
+    else:
+        print("Invalid option.")
     
-    # Final step of Sequencing
-    print("List finalized. Have a productive day!")
-
-
-print("Your To Do List")
-print("----------------------------------------------")
-user = input("What is your name?: ")
-print(f"Hello {user}! Today is a new day!")
-day = input("What day is it?: ")
-
-print(f"Your to-do list is empty for {day}.")
-answer = input("Would you like to add something to your list? (yes/no): ").lower()
-
-# CALLING THE PROCEDURE
-manage_tasks(answer)
-
-print(f"\nFinal {day} Schedule: {to_do}")
+manage_list(task_list)
